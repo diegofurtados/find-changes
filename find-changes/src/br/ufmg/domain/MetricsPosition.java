@@ -20,4 +20,6 @@ public class MetricsPosition {
 	public static int lackOfCohesionInMethods = 16;
 	public static int couplingBetweenClasses = 17;
 	public static int responseForClass = 18;
+	
+	public static int metricsTotalValue = 19;
 }

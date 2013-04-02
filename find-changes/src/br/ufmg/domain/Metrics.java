@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Metrics {
 	private Date revisionDate;
-	Map<String, ClassMetrics> classMetrics;
+	Map<String, MetricClasses> classMetrics;
 
 	public Date getRevisionDate() {
 		return revisionDate;

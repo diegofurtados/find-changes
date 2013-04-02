@@ -1,6 +1,6 @@
 package br.ufmg.domain;
 
-public class ClassMetrics {
+public class MetricClasses {
 	private String entityName;
 	private String superEntityName;
 	private int fanIn;
@@ -12,8 +12,8 @@ public class ClassMetrics {
 	private int numberOfMethodsInherited;
 	private int numberOfPrivateAttributes;
 	private int numberOfPrivateMethods;
-	private int numberOfprivateAttributes;
-	private int numberOfprivateMethods;
+	private int numberOfPublicAttributes;
+	private int numberOfPublicMethods;
 	private int weightedMethodCount;
 	private int hierarchyNestingLevel;
 	private int numberOfChildren;
@@ -109,20 +109,20 @@ public class ClassMetrics {
 		this.numberOfPrivateMethods = numberOfPrivateMethods;
 	}
 
-	public int getNumberOfprivateAttributes() {
-		return numberOfprivateAttributes;
+	public int getNumberOfPublicAttributes() {
+		return numberOfPublicAttributes;
 	}
 
-	public void setNumberOfprivateAttributes(int numberOfprivateAttributes) {
-		this.numberOfprivateAttributes = numberOfprivateAttributes;
+	public void setNumberOfPublicAttributes(int numberOfPublicAttributes) {
+		this.numberOfPublicAttributes = numberOfPublicAttributes;
 	}
 
-	public int getNumberOfprivateMethods() {
-		return numberOfprivateMethods;
+	public int getNumberOfPublicMethods() {
+		return numberOfPublicMethods;
 	}
 
-	public void setNumberOfprivateMethods(int numberOfprivateMethods) {
-		this.numberOfprivateMethods = numberOfprivateMethods;
+	public void setNumberOfPublicMethods(int numberOfPublicMethods) {
+		this.numberOfPublicMethods = numberOfPublicMethods;
 	}
 
 	public int getWeightedMethodCount() {
@@ -172,5 +172,9 @@ public class ClassMetrics {
 	public void setResponseForClass(int responseForClass) {
 		this.responseForClass = responseForClass;
 	}
-
+	
+	@Override
+	public String toString() {
+		return this.entityName;
+	}
 }

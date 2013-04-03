@@ -1,30 +1,24 @@
 package br.ufmg.domain;
 
-import java.util.Date;
-import java.util.Map;
 
 public class Metrics {
-	private Date revisionDate;
-	Map<String, MetricClasses> classMetrics;
-
-	public Date getRevisionDate() {
-		return revisionDate;
-	}
-
-	public void setRevisionDate(Date revisionDate) {
-		this.revisionDate = revisionDate;
-	}
-
-	public Map<String, MetricClasses> getClassMetrics() {
-		return classMetrics;
-	}
-
-	public void setClassMetrics(Map<String, MetricClasses> classMetrics) {
-		this.classMetrics = classMetrics;
-	}
-	
-	@Override
-	public String toString() {
-		return this.revisionDate != null ? this.revisionDate.toString() : null;
-	}
+	public String entityName;
+	public String superEntityName;
+	public int fanIn;
+	public int fanOut;
+	public int numberOfAttributes;
+	public int numberOfAttributesInherited;
+	public int numberOfLinesOfCode;
+	public int numberOfMethods;
+	public int numberOfMethodsInherited;
+	public int numberOfPrivateAttributes;
+	public int numberOfPrivateMethods;
+	public int numberOfPublicAttributes;
+	public int numberOfPublicMethods;
+	public int weightedMethodCount;
+	public int hierarchyNestingLevel;
+	public int numberOfChildren;
+	public int lackOfCohesionInMethods;
+	public int couplingBetweenClasses;
+	public int responseForClass;
 }

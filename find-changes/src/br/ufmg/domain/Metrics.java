@@ -14,4 +14,17 @@ public class Metrics {
 	public void setRevisionDate(Date revisionDate) {
 		this.revisionDate = revisionDate;
 	}
+
+	public Map<String, MetricClasses> getClassMetrics() {
+		return classMetrics;
+	}
+
+	public void setClassMetrics(Map<String, MetricClasses> classMetrics) {
+		this.classMetrics = classMetrics;
+	}
+	
+	@Override
+	public String toString() {
+		return this.revisionDate != null ? this.revisionDate.toString() : null;
+	}
 }

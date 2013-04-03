@@ -1,10 +1,20 @@
 package br.ufmg.domain.util;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
 import br.ufmg.domain.MetricClasses;
+import br.ufmg.domain.Metrics;
 import br.ufmg.domain.MetricsPosition;
 
 public class MetricsUtils {
-	public static MetricClasses getMetricsClassesFromLine(String line) {
+	private static MetricClasses getMetricsClassesFromLine(String line) {
 		MetricClasses metricClasses = new MetricClasses();
 
 		if (line != null && !line.isEmpty()) {
@@ -36,4 +46,32 @@ public class MetricsUtils {
 
 		return metricClasses;
 	}
+
+	public static Metrics getMetricsFromFile(File file){
+		Metrics metrics = new Metrics();
+		Map<String, MetricClasses> classMetrics = new HashMap<String, MetricClasses>();
+		Scanner scanner;
+		String fileName = file.getName().replace(".csv", "");
+		try {
+			scanner = new Scanner(file);
+			scanner.nextLine();
+			while(scanner.hasNextLine()){
+				MetricClasses classes = MetricsUtils.getMetricsClassesFromLine(scanner.nextLine());
+				classMetrics.put(fileName, classes);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+		metrics.setClassMetrics(classMetrics);
+		try {
+			metrics.setRevisionDate(format.parse(fileName));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return metrics;
+		
+	}
+	
 }

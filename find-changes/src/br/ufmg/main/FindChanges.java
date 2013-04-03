@@ -1,25 +1,28 @@
 package br.ufmg.main;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
-import br.ufmg.domain.MetricClasses;
+import br.ufmg.domain.Metrics;
 import br.ufmg.domain.util.MetricsUtils;
 
 public class FindChanges {
 
 	public static void main(String[] args) {
-		Scanner scanner;
-		try {
-			scanner = new Scanner(new File("../../../2005-01-01.csv"));
-			scanner.nextLine();
-			while(scanner.hasNextLine()){
-				MetricClasses classes = MetricsUtils.getMetricsClassesFromLine(scanner.nextLine());
-				System.out.println(classes);
+		List<Metrics> metrics = new ArrayList<Metrics>();
+		List<Metrics> candidates = new ArrayList<Metrics>();
+
+		File path = new File("../../../");
+		File[] files = path != null && path.isDirectory() ? path.listFiles() : new File[0];
+
+		for (int i = 0; i < files.length; i++) {
+			File file = files[i];
+			if (file.getName().endsWith(".csv")) {
+				metrics.add(MetricsUtils.getMetricsFromFile(file));
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
 		}
+
+		System.out.println(metrics);
 	}
 }
